@@ -15,6 +15,7 @@
 		3462FAFD1C15602500B73A53 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3462FAFB1C15602500B73A53 /* LaunchScreen.storyboard */; };
 		3462FB081C15602500B73A53 /* ___ActionSheetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3462FB071C15602500B73A53 /* ___ActionSheetTests.m */; };
 		3462FB131C15602500B73A53 /* ___ActionSheetUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3462FB121C15602500B73A53 /* ___ActionSheetUITests.m */; };
+		3462FB221C1560E600B73A53 /* DMCustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3462FB211C1560E600B73A53 /* DMCustomActionSheet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		3462FB0E1C15602500B73A53 /* 自定义ActionSheetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "自定义ActionSheetUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3462FB121C15602500B73A53 /* ___ActionSheetUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "___ActionSheetUITests.m"; sourceTree = "<group>"; };
 		3462FB141C15602500B73A53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3462FB201C1560E600B73A53 /* DMCustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCustomActionSheet.h; sourceTree = "<group>"; };
+		3462FB211C1560E600B73A53 /* DMCustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCustomActionSheet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				3462FAF11C15602500B73A53 /* AppDelegate.m */,
 				3462FAF31C15602500B73A53 /* ViewController.h */,
 				3462FAF41C15602500B73A53 /* ViewController.m */,
+				3462FB201C1560E600B73A53 /* DMCustomActionSheet.h */,
+				3462FB211C1560E600B73A53 /* DMCustomActionSheet.m */,
 				3462FAF61C15602500B73A53 /* Main.storyboard */,
 				3462FAF91C15602500B73A53 /* Assets.xcassets */,
 				3462FAFB1C15602500B73A53 /* LaunchScreen.storyboard */,
@@ -202,6 +207,7 @@
 		3462FAE21C15602500B73A53 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = DM;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Dvel;
 				TargetAttributes = {
@@ -276,6 +282,7 @@
 				3462FAF51C15602500B73A53 /* ViewController.m in Sources */,
 				3462FAF21C15602500B73A53 /* AppDelegate.m in Sources */,
 				3462FAEF1C15602500B73A53 /* main.m in Sources */,
+				3462FB221C1560E600B73A53 /* DMCustomActionSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

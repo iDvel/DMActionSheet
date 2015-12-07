@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "DMCustomActionSheet.h"
+
+#define SCREEN_BOUNDS [UIScreen mainScreen].bounds
 
 @interface ViewController ()
 
@@ -16,12 +19,24 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_BOUNDS.size.width / 2 - 50,
+																  SCREEN_BOUNDS.size.height / 3 + 50,
+																  100, 100)];
+	[button setTitle:@"我是一个按钮" forState:UIControlStateNormal];
+	button.backgroundColor = [UIColor purpleColor];
+	[self.view addSubview:button];
+	[button addTarget:self action:@selector(showCustomActionSheet) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
-	// Dispose of any resources that can be recreated.
+- (void)showCustomActionSheet
+{
+	NSLog(@"%s", __func__);
+	UIView *view = [[UIView alloc] init];
+	view.backgroundColor = [UIColor blueColor];
+	
+	DMCustomActionSheet *customActionSheet = [[DMCustomActionSheet alloc] initWithView:view height:200];
+//	[DMCustomActionSheet showActionSheetWithView:]
+	[self.view addSubview:customActionSheet];
 }
 
 @end
