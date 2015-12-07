@@ -34,9 +34,10 @@
 	UIView *view = [[UIView alloc] init];
 	view.backgroundColor = [UIColor blueColor];
 	
-	DMCustomActionSheet *customActionSheet = [[DMCustomActionSheet alloc] initWithView:view height:200];
-//	[DMCustomActionSheet showActionSheetWithView:]
-	[self.view addSubview:customActionSheet];
+//	DMCustomActionSheet *customActionSheet = [[DMCustomActionSheet alloc] initWithView:view height:200];
+//	[self.view addSubview:customActionSheet];
+	
+	[self.view addSubview:[DMCustomActionSheet actionSheetWithView:view height:200]];
 }
 
 @end

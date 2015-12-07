@@ -10,6 +10,6 @@
 
 @interface DMCustomActionSheet : UIView
 
-- (instancetype)initWithView:(UIView *)view height:(CGFloat)height;
++ (instancetype)actionSheetWithView:(UIView *)view height:(CGFloat)height;
 
 @end

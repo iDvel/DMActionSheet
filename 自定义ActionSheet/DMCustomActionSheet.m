@@ -24,6 +24,11 @@
 
 @implementation DMCustomActionSheet
 
++ (instancetype)actionSheetWithView:(UIView *)view height:(CGFloat)height
+{
+	return [[DMCustomActionSheet alloc] initWithView:view height:height];
+}
+
 - (instancetype)initWithView:(UIView *)view height:(CGFloat)height
 {
 	self = [super init];
@@ -36,6 +41,8 @@
 		
 		// 2.设置传入的view：
 		self.actionSheetView = view;
+#warning TODO 此处设置颜色，应该和取消按钮的颜色一致
+//		self.actionSheetView.backgroundColor = xxx
 		self.actionSheetView.frame = CGRectMake(MARGIN,
 												SCREEN_HEIGHT,
 												CANCEL_BUTTON_WIDTH,
@@ -65,7 +72,7 @@
 	return self;
 }
 
-#pragma mark 懒加载
+/** 取消按钮 */
 - (UIButton *)cancelButton
 {
 	if (_cancelButton == nil) {
@@ -79,7 +86,7 @@
 		
 		[_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
 #warning TODO 颜色自己改一下
-		_cancelButton.backgroundColor = [UIColor yellowColor];
+		_cancelButton.backgroundColor = [UIColor whiteColor];
 		[_cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 		[_cancelButton addTarget:self action:@selector(hideWhenTap) forControlEvents:UIControlEventTouchUpInside];
 	}
