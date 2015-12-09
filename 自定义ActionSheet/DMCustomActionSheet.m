@@ -19,7 +19,7 @@
 /** 取消按钮 */
 @property (nonatomic, strong) UIButton *cancelButton;
 /** 自定义的ActionSheetView */
-@property (nonatomic, weak) UIView *actionSheetView;
+@property (nonatomic, strong) UIView *actionSheetView;
 @end
 
 @implementation DMCustomActionSheet
@@ -40,28 +40,24 @@
 		[self addGestureRecognizer:tapGesture];
 		
 		// 2.设置传入的view：
-		self.actionSheetView = view;
-#warning TODO 此处设置颜色，应该和取消按钮的颜色一致
-//		self.actionSheetView.backgroundColor = xxx
-		self.actionSheetView.frame = CGRectMake(MARGIN,
-												SCREEN_HEIGHT,
-												CANCEL_BUTTON_WIDTH,
-												height);
-		self.actionSheetView.layer.cornerRadius = 10;
-		UITapGestureRecognizer *noTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(noTap)];
-		[self.actionSheetView addGestureRecognizer:noTap];
+		self.actionSheetView = ({
+			view.frame = CGRectMake(MARGIN, SCREEN_HEIGHT, CANCEL_BUTTON_WIDTH, height);
+			view.layer.cornerRadius = 10;
+			UITapGestureRecognizer *noTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(noTap)];
+			[view addGestureRecognizer:noTap];
+			view;
+		});
 		
 		// 3.设置动画
 		[self addSubview:self.cancelButton];
 		[self addSubview:self.actionSheetView];
 		[UIView animateWithDuration:0.25 animations:^{
 			self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
-			// 取消按钮动画：把按钮从屏幕下面提上来
+			// 取消按钮动画：从屏幕下面提上来
 			self.cancelButton.frame = CGRectMake(MARGIN,
 												 SCREEN_HEIGHT - CANCEL_BUTTON_HEIGHT - MARGIN,
 												 CANCEL_BUTTON_WIDTH,
 												 CANCEL_BUTTON_HEIGHT);
-			
 			// actionSheetView动画：从屏幕下面提上来
 			self.actionSheetView.frame = CGRectMake(MARGIN,
 													CGRectGetMinY(self.cancelButton.frame) - 8 - height,
@@ -85,7 +81,6 @@
 		_cancelButton.layer.cornerRadius = 10;
 		
 		[_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
-#warning TODO 颜色自己改一下
 		_cancelButton.backgroundColor = [UIColor whiteColor];
 		[_cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 		[_cancelButton addTarget:self action:@selector(hideWhenTap) forControlEvents:UIControlEventTouchUpInside];
@@ -99,23 +94,20 @@
 {
 	[UIView animateWithDuration:0.25 animations:^{
 		self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+		// 100 ： 只要大于取消按钮的高度即可。
 		[self.cancelButton setFrame:CGRectMake(MARGIN, SCREEN_HEIGHT + 100, CANCEL_BUTTON_WIDTH, CANCEL_BUTTON_HEIGHT)];
 		[self.actionSheetView setFrame:CGRectMake(MARGIN, SCREEN_HEIGHT + CANCEL_BUTTON_HEIGHT + 100, CANCEL_BUTTON_WIDTH, CANCEL_BUTTON_HEIGHT)];
 	} completion:^(BOOL finished) {
 		if (finished) {
-#warning TODO 大神自己研究下。。。
 			[self removeFromSuperview];
-			NSLog(@"此处应该i'm gone"); // 操，怎么不释放
 		}
 	}];
 }
 
 /** 啥都不写，为了给ActionSheetView取消tap手势 */
-- (void)noTap{}
+- (void)noTap {}
 
-- (void)dealloc
-{
-	NSLog(@"i'm gone");
-}
+/** 啥也不写，屏蔽掉父视图的touchesBegan */
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {}
 
 @end

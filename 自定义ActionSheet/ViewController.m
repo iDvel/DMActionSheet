@@ -30,14 +30,15 @@
 
 - (void)showCustomActionSheet
 {
-	NSLog(@"%s", __func__);
 	UIView *view = [[UIView alloc] init];
 	view.backgroundColor = [UIColor blueColor];
 	
-//	DMCustomActionSheet *customActionSheet = [[DMCustomActionSheet alloc] initWithView:view height:200];
-//	[self.view addSubview:customActionSheet];
-	
 	[self.view addSubview:[DMCustomActionSheet actionSheetWithView:view height:200]];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+	NSLog(@"你点到我了");
 }
 
 @end
